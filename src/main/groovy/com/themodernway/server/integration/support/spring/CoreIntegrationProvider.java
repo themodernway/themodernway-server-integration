@@ -16,8 +16,6 @@
 
 package com.themodernway.server.integration.support.spring;
 
-import java.io.IOException;
-
 import com.themodernway.server.core.AbstractBeanFactoryProviderNamed;
 
 public class CoreIntegrationProvider extends AbstractBeanFactoryProviderNamed<ICoreIntegrationDescriptor> implements ICoreIntegrationProvider
@@ -25,18 +23,5 @@ public class CoreIntegrationProvider extends AbstractBeanFactoryProviderNamed<IC
     public CoreIntegrationProvider()
     {
         super(ICoreIntegrationDescriptor.class);
-    }
-
-    @Override
-    public void destroy()
-    {
-        try
-        {
-            close();
-        }
-        catch (final IOException e)
-        {
-            logger().error(format("error on close(%s).", getName()), e);
-        }
     }
 }
