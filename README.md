@@ -1,7 +1,7 @@
 The Modern Way Server Integration
 ======
 
-The Modern Way Server Integration is a package containing Spring Integration support.
+The Modern Way Server Integration is a package containing Spring Integration/Apache Camel and CXF support.
 
 https://github.com/themodernway/themodernway-server-integration
 
