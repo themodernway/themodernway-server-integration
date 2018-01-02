@@ -243,6 +243,7 @@ dependencies {
     compile(group: 'org.apache.camel', name: 'camel-core', version: '2.20.1')
     compile(group: 'org.apache.camel', name: 'camel-spring', version: '2.20.1')
     compile(group: 'org.apache.camel', name: 'camel-stream', version: '2.20.1')
+    compile group: 'org.apache.camel', name: 'camel-cxf-transport', version: '2.20.1'
     springIntegrationPackages().each { String name ->
         compile(group: 'org.springframework.integration', name: name, version: '4.3.12.RELEASE')
     }
