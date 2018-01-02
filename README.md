@@ -55,7 +55,7 @@ License:
 
 Copyright (c) 2017, 2018, The Modern Way. All rights reserved.
 
-The Modern Way Server Core is released under version 2.0 of the Apache License.
+The Modern Way Server Integration is released under version 2.0 of the Apache License.
 
 http://www.apache.org/licenses/LICENSE-2.0.html
 
