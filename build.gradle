@@ -202,7 +202,7 @@ def String getBuildServerHost() {
         InetAddress.getLocalHost().getHostName()
     }
     catch (Exception e) {
-        "localhost"
+        'localhost'
     }
 }
 
