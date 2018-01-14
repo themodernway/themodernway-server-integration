@@ -28,6 +28,8 @@ buildscript {
 import org.apache.tools.ant.filters.FixCrLfFilter
 import org.apache.tools.ant.filters.ReplaceTokens
 import java.net.InetAddress
+import java.util.List
+
 import org.ajoberstar.grgit.Grgit
 
 apply plugin: 'pmd'
@@ -44,7 +46,7 @@ sourceCompatibility = 1.8
 
 targetCompatibility = 1.8
 
-version = '1.2.25-RELEASE'
+version = '1.2.26-RELEASE'
 
 group = 'com.themodernway'
 
@@ -235,13 +237,18 @@ def String getBuildGITCommitMessage() {
 }
 
 dependencies {
-    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '1.2.25-RELEASE')
+    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '1.2.26-RELEASE')
     compile(group: 'org.apache.camel', name: 'camel-core', version: '2.20.1')
     compile(group: 'org.apache.camel', name: 'camel-spring', version: '2.20.1')
     compile(group: 'org.apache.camel', name: 'camel-stream', version: '2.20.1')
     compile(group: 'org.apache.camel', name: 'camel-xstream', version: '2.20.1')
-    compile(group: 'org.apache.camel', name: 'camel-velocity', version: '2.20.1')
     compile(group: 'org.apache.camel', name: 'camel-spring-ws', version: '2.20.1')
+    springCorePackages().each { String name ->
+        compile(group: 'org.springframework', name: name, version: '4.3.13.RELEASE')
+    }
+    springSecurityPackages().each { String name ->
+        compile(group: 'org.springframework.security', name: name, version: '4.2.3.RELEASE')
+    }
     springIntegrationPackages().each { String name ->
         compile(group: 'org.springframework.integration', name: name, version: '4.3.12.RELEASE')
     }
@@ -341,6 +348,13 @@ task buildGroovydocLinks {
     }
 }
 
+def List<String> springCorePackages() {
+    return [
+        'spring-messaging',
+        'spring-jms'
+    ]
+}
+
 def List<String> springIntegrationPackages() {
     return [
         'spring-integration-core',
@@ -360,5 +374,11 @@ def List<String> springIntegrationPackages() {
         'spring-integration-stream',
         'spring-integration-security',
         'spring-integration-scripting'
+    ]
+}
+
+def List<String> springSecurityPackages() {
+    return [
+        'spring-security-messaging'
     ]
 }

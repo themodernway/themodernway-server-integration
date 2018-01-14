@@ -16,7 +16,6 @@
 
 package com.themodernway.server.integration.support.spring;
 
-import com.themodernway.common.api.java.util.CommonOps;
 import com.themodernway.server.core.support.spring.ServerContextInstance;
 
 public class CoreIntegrationContextInstance extends ServerContextInstance implements ICoreIntegrationContext
@@ -35,6 +34,6 @@ public class CoreIntegrationContextInstance extends ServerContextInstance implem
     @Override
     public ICoreIntegrationProvider getCoreIntegrationProvider()
     {
-        return CommonOps.requireNonNull(getBeanSafely("CoreIntegrationProvider", ICoreIntegrationProvider.class), "CoreIntegrationProvider is null, initialization error.");
+        return requireNonNull(getBeanSafely("CoreIntegrationProvider", ICoreIntegrationProvider.class), "CoreIntegrationProvider is null, initialization error.");
     }
 }
