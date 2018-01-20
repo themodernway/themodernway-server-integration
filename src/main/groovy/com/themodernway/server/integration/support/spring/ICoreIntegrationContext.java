@@ -16,9 +16,38 @@
 
 package com.themodernway.server.integration.support.spring;
 
+import java.util.Map;
+
+import org.springframework.integration.channel.PublishSubscribeChannel;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageChannel;
+import org.springframework.messaging.PollableChannel;
+import org.springframework.messaging.SubscribableChannel;
+
+import com.themodernway.server.core.json.JSONObject;
 import com.themodernway.server.core.support.spring.IServerContext;
 
 public interface ICoreIntegrationContext extends IServerContext
 {
     public ICoreIntegrationProvider getCoreIntegrationProvider();
+
+    public MessageChannel getMessageChannel(String name);
+
+    public SubscribableChannel getSubscribableChannel(String name);
+
+    public PollableChannel getPollableChannel(String name);
+
+    public PublishSubscribeChannel getPublishSubscribeChannel(String name);
+
+    public boolean publish(String name, JSONObject message);
+
+    public boolean publish(String name, JSONObject message, long timeout);
+
+    public boolean publish(String name, JSONObject message, Map<String, ?> headers);
+
+    public boolean publish(String name, JSONObject message, Map<String, ?> headers, long timeout);
+
+    public <T> boolean publish(String name, Message<T> message);
+
+    public <T> boolean publish(String name, Message<T> message, long timeout);
 }

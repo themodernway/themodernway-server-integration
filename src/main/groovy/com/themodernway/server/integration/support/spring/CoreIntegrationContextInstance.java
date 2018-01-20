@@ -16,6 +16,15 @@
 
 package com.themodernway.server.integration.support.spring;
 
+import java.util.Map;
+
+import org.springframework.integration.channel.PublishSubscribeChannel;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageChannel;
+import org.springframework.messaging.PollableChannel;
+import org.springframework.messaging.SubscribableChannel;
+
+import com.themodernway.server.core.json.JSONObject;
 import com.themodernway.server.core.support.spring.ServerContextInstance;
 
 public class CoreIntegrationContextInstance extends ServerContextInstance implements ICoreIntegrationContext
@@ -35,5 +44,95 @@ public class CoreIntegrationContextInstance extends ServerContextInstance implem
     public ICoreIntegrationProvider getCoreIntegrationProvider()
     {
         return requireNonNull(getBeanSafely("CoreIntegrationProvider", ICoreIntegrationProvider.class), "CoreIntegrationProvider is null, initialization error.");
+    }
+
+    @Override
+    public final MessageChannel getMessageChannel(final String name)
+    {
+        MessageChannel channel = getBeanSafely(requireNonNull(name), MessageChannel.class);
+
+        if (null != channel)
+        {
+            return channel;
+        }
+        channel = getSubscribableChannel(name);
+
+        if (null != channel)
+        {
+            return channel;
+        }
+        channel = getPublishSubscribeChannel(name);
+
+        if (null != channel)
+        {
+            return channel;
+        }
+        return getPollableChannel(name);
+    }
+
+    @Override
+    public final SubscribableChannel getSubscribableChannel(final String name)
+    {
+        return getBeanSafely(requireNonNull(name), SubscribableChannel.class);
+    }
+
+    @Override
+    public final PollableChannel getPollableChannel(final String name)
+    {
+        return getBeanSafely(requireNonNull(name), PollableChannel.class);
+    }
+
+    @Override
+    public PublishSubscribeChannel getPublishSubscribeChannel(final String name)
+    {
+        return getBeanSafely(requireNonNull(name), PublishSubscribeChannel.class);
+    }
+
+    @Override
+    public final boolean publish(final String name, final JSONObject message)
+    {
+        return publish(requireNonNull(name), JSONMessageBuilder.createMessage(requireNonNull(message)));
+    }
+
+    @Override
+    public final boolean publish(final String name, final JSONObject message, final long timeout)
+    {
+        return publish(requireNonNull(name), JSONMessageBuilder.createMessage(requireNonNull(message)), timeout);
+    }
+
+    @Override
+    public final boolean publish(final String name, final JSONObject message, final Map<String, ?> headers)
+    {
+        return publish(requireNonNull(name), JSONMessageBuilder.createMessage(requireNonNull(message), requireNonNull(headers)));
+    }
+
+    @Override
+    public final boolean publish(final String name, final JSONObject message, final Map<String, ?> headers, final long timeout)
+    {
+        return publish(requireNonNull(name), JSONMessageBuilder.createMessage(requireNonNull(message), requireNonNull(headers)), timeout);
+    }
+
+    @Override
+    public final <T> boolean publish(final String name, final Message<T> message)
+    {
+        final MessageChannel channel = getMessageChannel(requireNonNull(name));
+
+        if (null != channel)
+        {
+            return channel.send(requireNonNull(message));
+        }
+        throw new IllegalArgumentException("MessageChannel " + name + " does not exist.");
+    }
+
+    @Override
+    public final <T> boolean publish(final String name, final Message<T> message, final long timeout)
+    {
+        final MessageChannel channel = getMessageChannel(requireNonNull(name));
+
+        if (null != channel)
+        {
+            return channel.send(requireNonNull(message), timeout);
+        }
+        throw new IllegalArgumentException("MessageChannel " + name + " does not exist.");
     }
 }
