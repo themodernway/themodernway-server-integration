@@ -8,6 +8,7 @@
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
 		<config>src/main/resources/com/themodernway/server/integration/config/CoreIntegrationApplicationContext.xml</config>
+		<config>src/test/resources/com/themodernway/server/integration/test/ApplicationContext.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
