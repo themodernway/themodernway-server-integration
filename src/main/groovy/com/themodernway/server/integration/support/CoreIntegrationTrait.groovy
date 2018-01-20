@@ -25,6 +25,7 @@ import org.springframework.messaging.SubscribableChannel
 import com.themodernway.server.core.json.JSONObject
 import com.themodernway.server.integration.support.spring.CoreIntegrationContextInstance
 import com.themodernway.server.integration.support.spring.ICoreIntegrationContext
+import com.themodernway.server.integration.support.spring.ICoreIntegrationProvider
 
 import groovy.transform.CompileStatic
 import groovy.transform.Memoized
@@ -36,6 +37,12 @@ public trait CoreIntegrationTrait
     public ICoreIntegrationContext getCoreIntegrationContext()
     {
         CoreIntegrationContextInstance.getCoreIntegrationContextInstance()
+    }
+
+    @Memoized
+    public ICoreIntegrationProvider getCoreIntegrationProvider()
+    {
+        getCoreIntegrationContext().getCoreIntegrationProvider()
     }
 
     @Memoized
