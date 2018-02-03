@@ -1,7 +1,7 @@
 The Modern Way Server Integration
 ======
 
-The Modern Way Server Integration is a package containing Spring Integration/Apache Camel and CXF support.
+The Modern Way Server Integration is a package containing Spring Integration/Apache Camel support.
 
 https://github.com/themodernway/themodernway-server-integration
 
@@ -14,42 +14,42 @@ Maven:
 <dependency>
   <groupId>com.themodernway</groupId>
   <artifactId>themodernway-server-integration</artifactId>
-  <version>1.3.2-RELEASE</version>
+  <version>2.0.0-RC1</version>
 </dependency>
 ```
 Gradle:
 ```
 dependencies {
-    compile(group: 'com.themodernway', name: 'themodernway-server-integration', version: '1.3.2-RELEASE')
+    compile(group: 'com.themodernway', name: 'themodernway-server-integration', version: '2.0.0-RC1')
 }
 ```
 Javadoc URL:
 
-http://docs.themodernway.com/documents/javadoc/themodernway-server-integration/
+http://docs.themodernway.com/documents/javadoc/themodernway-server-integration-v2/
 
 Tests URL:
 
-http://docs.themodernway.com/documents/reports/themodernway-server-integration/tests/test/
+http://docs.themodernway.com/documents/reports/themodernway-server-integration-v2/tests/test/
 
 Code Coverage URL:
 
-http://docs.themodernway.com/documents/reports/themodernway-server-integration/coverage/
+http://docs.themodernway.com/documents/reports/themodernway-server-integration-v2/coverage/
 
 Check Style URL:
 
-http://docs.themodernway.com/documents/reports/themodernway-server-integration/checkstyle/main.html
+http://docs.themodernway.com/documents/reports/themodernway-server-integration-v2/checkstyle/main.html
 
 PMD URL:
 
-http://docs.themodernway.com/documents/reports/themodernway-server-integration/pmd/main.html
+http://docs.themodernway.com/documents/reports/themodernway-server-integration-v2/pmd/main.html
 
 FindBugs URL:
 
-http://docs.themodernway.com/documents/reports/themodernway-server-integration/findbugs/main.html
+http://docs.themodernway.com/documents/reports/themodernway-server-integration-v2/findbugs/main.html
 
 CVE Dependency Check URL:
 
-http://docs.themodernway.com/documents/reports/themodernway-server-integration/cve/dependency-check-report.html
+http://docs.themodernway.com/documents/reports/themodernway-server-integration-v2/cve/dependency-check-report.html
 
 License:
 
