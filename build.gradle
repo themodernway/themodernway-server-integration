@@ -46,7 +46,7 @@ sourceCompatibility = 1.8
 
 targetCompatibility = 1.8
 
-version = '2.0.0-RC2'
+version = '2.0.0-RC3'
 
 group = 'com.themodernway'
 
@@ -240,7 +240,7 @@ def String getBuildGITCommitMessage() {
 }
 
 dependencies {
-    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '2.0.0-RC2')
+    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '2.0.0-RC3')
     compile(group: 'org.apache.camel', name: 'camel-core', version: '2.20.2')
     compile(group: 'org.apache.camel', name: 'camel-cxf', version: '2.20.2')
     compile(group: 'org.apache.camel', name: 'camel-spring', version: '2.20.2')
