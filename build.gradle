@@ -46,7 +46,7 @@ sourceCompatibility = 1.8
 
 targetCompatibility = 1.8
 
-version = '2.0.0-RC4'
+version = '2.0.0-RC5'
 
 group = 'com.themodernway'
 
@@ -77,7 +77,7 @@ task filterConfigs(dependsOn: deleteConfigs, type: Copy) {
 
 task doJavaDocs(type: Groovydoc) {
     source = sourceSets.main.allSource
-    classpath = sourceSets.main.runtimeClasspath
+    classpath = sourceSets.main.compileClasspath
     destinationDir = file("${buildDir}/docs/javadoc")
     docTitle = "${getProjectCommonName()}"
     footer = "<small><a href=\"${getBuildGITHomeURL()}\" target=\"_blank\">${getProjectCommonName()} - &copy; 2018</a> - <a href=\"${getBuildGITCommitHash()}\" target=\"_blank\">${getBuildModuleVersion()}</a> - <a href=\"mailto:deansjones@gmail.com\">Author: Dean S. Jones</a></small>"
@@ -240,8 +240,7 @@ def String getBuildGITCommitMessage() {
 }
 
 dependencies {
-    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '2.0.0-RC4')
-    compile(group: 'commons-net', name: 'commons-net', version: '3.6')
+    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '2.0.0-RC5')
     compile(group: 'org.apache.camel', name: 'camel-core', version: '2.20.2')
     compile(group: 'org.apache.camel', name: 'camel-cxf', version: '2.20.2')
     compile(group: 'org.apache.camel', name: 'camel-spring', version: '2.20.2')
