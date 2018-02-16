@@ -242,7 +242,7 @@ def String getBuildGITCommitMessage() {
 dependencies {
     compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '2.0.1-RELEASE')
     compile(group: 'org.apache.camel', name: 'camel-core', version: '2.20.2')
-    compile(group: 'org.apache.camel', name: 'camel-cxf', version: '2.20.2')
+    //compile(group: 'org.apache.camel', name: 'camel-cxf', version: '2.20.2')
     compile(group: 'org.apache.camel', name: 'camel-spring', version: '2.20.2')
     compile(group: 'org.apache.camel', name: 'camel-stream', version: '2.20.2')
     compile(group: 'org.apache.camel', name: 'camel-xstream', version: '2.20.2')
