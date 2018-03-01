@@ -253,7 +253,7 @@ dependencies {
     compile(group: 'org.springframework.integration', name: 'spring-integration-groovy', version: '5.0.2.RELEASE') {
         exclude(group: 'org.codehaus.groovy', module: 'groovy-all')
     }
-    compile(group: 'org.springframework.integration', name: 'spring-integration-kafka', version: '3.0.1.RELEASE')
+    compile(group: 'org.springframework.integration', name: 'spring-integration-kafka', version: '3.0.2.RELEASE')
     compile(group: 'javax.jms', name: 'javax.jms-api', version: '2.0.1')
     compileOnly(group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0')
     testCompile(group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3')
