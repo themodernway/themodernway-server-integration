@@ -46,7 +46,7 @@ sourceCompatibility = 1.8
 
 targetCompatibility = 1.8
 
-version = '2.0.4-RELEASE'
+version = '2.0.5-RELEASE'
 
 group = 'com.themodernway'
 
@@ -240,7 +240,7 @@ def String getBuildGITCommitMessage() {
 }
 
 dependencies {
-    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '2.0.4-RELEASE')
+    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '2.0.5-RELEASE')
     springCorePackages().each { String name ->
         compile(group: 'org.springframework', name: name, version: '5.0.4.RELEASE')
     }
@@ -366,6 +366,7 @@ def List<String> springIntegrationPackages() {
         'spring-integration-mail',
         'spring-integration-file',
         'spring-integration-http',
+        'spring-integration-amqp',
         'spring-integration-event',
         'spring-integration-stream',
         'spring-integration-security',
