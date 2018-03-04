@@ -22,7 +22,7 @@ import com.themodernway.server.core.IBeanFactoryProviderNamed;
 
 public interface ICoreIntegrationProvider extends IBeanFactoryProviderNamed<ICoreIntegrationDescriptor>
 {
-    default public void destroy() throws IOException
+    default void destroy() throws IOException
     {
         close();
     }
