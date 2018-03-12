@@ -31,7 +31,6 @@ import com.themodernway.server.core.json.binder.BinderType;
 
 public class SimpleJMSMessageConverter extends SimpleMessageConverter
 {
-    private static final String JSON_PARSE_ERROR = "Error parsing JSON";
     @Override
     public Message toMessage(final Object object, final Session session) throws JMSException, MessageConversionException
     {
@@ -47,7 +46,7 @@ public class SimpleJMSMessageConverter extends SimpleMessageConverter
                 }
                 catch (final ParserException e)
                 {
-                    throw new MessageConversionException(JSON_PARSE_ERROR, e);
+                    throw new MessageConversionException("Error parsing JSON", e);
                 }
             }
             throw new MessageConversionException("Can't convert payload of type [" + ObjectUtils.nullSafeClassName(payload) + "] to JSON text for JMS");
@@ -60,7 +59,7 @@ public class SimpleJMSMessageConverter extends SimpleMessageConverter
             }
             catch (final ParserException e)
             {
-                throw new MessageConversionException(JSON_PARSE_ERROR, e);
+                throw new MessageConversionException("Error parsing JSON", e);
             }
         }
         throw new MessageConversionException("Can't convert object of type [" + ObjectUtils.nullSafeClassName(object) + "] to JSON text for JMS");
@@ -77,7 +76,7 @@ public class SimpleJMSMessageConverter extends SimpleMessageConverter
             }
             catch (final ParserException e)
             {
-                throw new MessageConversionException(JSON_PARSE_ERROR, e);
+                throw new MessageConversionException("Error parsing JSON", e);
             }
         }
         return super.fromMessage(message);
