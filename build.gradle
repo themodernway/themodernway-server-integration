@@ -48,7 +48,7 @@ sourceCompatibility = 1.8
 
 targetCompatibility = 1.8
 
-version = '2.0.12-RELEASE'
+version = '2.0.14-RELEASE'
 
 group = 'com.themodernway'
 
@@ -242,7 +242,7 @@ def String getBuildGITCommitMessage() {
 }
 
 dependencies {
-    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '2.0.12-RELEASE')
+    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '2.0.14-RELEASE')
     springCorePackages().each { String name ->
         compile(group: 'org.springframework', name: name, version: '5.0.4.RELEASE')
     }
