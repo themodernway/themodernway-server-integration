@@ -1,6 +1,8 @@
 The Modern Way Server Integration
 ======
 
+![<TMW>](http://docs.themodernway.com/tmw4.jpg)
+
 The Modern Way Server Integration is a package containing Spring Integration/Apache Camel support.
 
 https://github.com/themodernway/themodernway-server-integration

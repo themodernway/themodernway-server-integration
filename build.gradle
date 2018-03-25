@@ -178,7 +178,7 @@ tasks.withType(GroovyCompile) {
     groovyOptions.optimizationOptions.indy = true
 }
 
-def getFilterTokens() {
+def Map getFilterTokens() {
     [GRADLE_BUILD_ARTIFACT_ID: getProjectArtifactID(), GRADLE_BUILD_PROJECT_TITLE: getProjectTitle(), GRADLE_BUILD_USER: getBuildUser(), GRADLE_BUILD_DATE: getBuildDate(), GRADLE_JAVA_VERSION: getJavaVersion(), GRADLE_GIT_COMMIT_HASH: getBuildGITCommitHash(), GRADLE_GIT_COMMIT_USER: getBuildGITCommitUser(), GRADLE_GIT_COMMIT_MESSAGE: getBuildGITCommitMessage(), GRADLE_BUILD_SERVER_HOST: getBuildServerHost(), GRADLE_BUILD_SERVER_BUILD: getBuildServerBuild(), GRADLE_BUILD_MODULE_VERSION: getBuildModuleVersion()]
 }
 
@@ -271,13 +271,24 @@ artifacts {
 
 signing { sign configurations.archives }
 
+def String getRepoUploadArchives() {
+    getBuildModuleVersion().endsWith('SNAPSHOT') ? 'https://oss.sonatype.org/content/repositories/snapshots/' : 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+}
+
+def String getUserNameUploadArchives() {
+    project.findProperty('sonatype_username') ?: ''
+}
+
+def String getPassWordUploadArchives() {
+    project.findProperty('sonatype_password') ?: ''
+}
+
 uploadArchives {
     repositories {
         mavenDeployer {
             beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-            repository(url: "${sonatype_stageingURL}") {
-                //repository(url: "${sonatype_snapshotURL}") {
-                authentication(userName: "${sonatype_user_tmw}", password: "${sonatype_password_tmw}")
+            repository(url: getRepoUploadArchives()) {
+                authentication(userName: getUserNameUploadArchives(), password: getPassWordUploadArchives())
             }
             pom.project {
                 name 'TheModernWay-Server-Integration'
