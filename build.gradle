@@ -111,7 +111,6 @@ jar {
 
 repositories {
     mavenCentral()
-    maven { url "${sonatype_snapshotURL}" }
 }
 
 task codeCoverage { doLast { println ':codeCoverage-done' } }
