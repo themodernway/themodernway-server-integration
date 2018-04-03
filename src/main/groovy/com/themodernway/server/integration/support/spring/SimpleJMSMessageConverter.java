@@ -25,8 +25,8 @@ import org.springframework.jms.support.converter.MessageConversionException;
 import org.springframework.jms.support.converter.SimpleMessageConverter;
 import org.springframework.util.ObjectUtils;
 
+import com.themodernway.common.api.types.ParserException;
 import com.themodernway.server.core.json.JSONObject;
-import com.themodernway.server.core.json.ParserException;
 import com.themodernway.server.core.json.binder.BinderType;
 
 public class SimpleJMSMessageConverter extends SimpleMessageConverter
