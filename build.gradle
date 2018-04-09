@@ -46,7 +46,7 @@ sourceCompatibility = 1.8
 
 targetCompatibility = 1.8
 
-version = '2.1.4-RELEASE'
+version = '2.1.5-RELEASE'
 
 group = 'com.themodernway'
 
@@ -239,17 +239,17 @@ def String getBuildGITCommitMessage() {
 }
 
 dependencies {
-    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '2.1.4-RELEASE')
+    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '2.1.5-RELEASE')
     springCorePackages().each { String name ->
         compile(group: 'org.springframework', name: name, version: '5.0.4.RELEASE')
     }
     springSecurityPackages().each { String name ->
-        compile(group: 'org.springframework.security', name: name, version: '5.0.3.RELEASE')
+        compile(group: 'org.springframework.security', name: name, version: '5.0.4.RELEASE')
     }
     springIntegrationPackages().each { String name ->
-        compile(group: 'org.springframework.integration', name: name, version: '5.0.3.RELEASE')
+        compile(group: 'org.springframework.integration', name: name, version: '5.0.4.RELEASE')
     }
-    compile(group: 'org.springframework.integration', name: 'spring-integration-groovy', version: '5.0.3.RELEASE') {
+    compile(group: 'org.springframework.integration', name: 'spring-integration-groovy', version: '5.0.4.RELEASE') {
         exclude(group: 'org.codehaus.groovy', module: 'groovy-all')
     }
     compile(group: 'org.springframework.integration', name: 'spring-integration-kafka', version: '3.0.3.RELEASE')
