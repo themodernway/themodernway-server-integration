@@ -44,7 +44,7 @@ sourceCompatibility = 1.8
 
 targetCompatibility = 1.8
 
-version = '1.3.6-RELEASE'
+version = '1.3.7-RELEASE'
 
 group = 'com.themodernway'
 
@@ -62,7 +62,7 @@ tasks.withType(Checkstyle) { source 'src/main' }
 task deleteConfigs(type: Delete) {
     def tree = project.fileTree(dir: "${buildDir}/resources/main")
     tree.each { file ->
-        delete(file)
+        file.delete()
     }
 }
 
@@ -237,7 +237,7 @@ def String getBuildGITCommitMessage() {
 }
 
 dependencies {
-    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '1.3.6-RELEASE')
+    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '1.3.7-RELEASE')
     springCorePackages().each { String name ->
         compile(group: 'org.springframework', name: name, version: '4.3.16.RELEASE')
     }
