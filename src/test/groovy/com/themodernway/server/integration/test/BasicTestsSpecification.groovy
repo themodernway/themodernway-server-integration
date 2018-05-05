@@ -24,9 +24,9 @@ public class BasicTestsSpecification extends ServerCoreSpecification implements 
     def setupSpec()
     {
         setupServerCoreDefault(BasicTestsSpecification,
-                "classpath:/com/themodernway/server/integration/test/ApplicationContext.xml",
-                "classpath:/com/themodernway/server/core/config/CoreApplicationContext.xml"
-                )
+            "classpath:/com/themodernway/server/integration/test/ApplicationContext.xml",
+            "classpath:/com/themodernway/server/core/config/CoreApplicationContext.xml"
+        )
     }
 
     def cleanupSpec()

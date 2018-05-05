@@ -16,11 +16,17 @@
  * limitations under the License.
  */
 -->
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:cache="http://www.springframework.org/schema/cache"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 						http://www.springframework.org/schema/beans/spring-beans.xsd
 						http://www.springframework.org/schema/context
-						http://www.springframework.org/schema/context/spring-context.xsd">
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/cache
+						http://www.springframework.org/schema/cache/spring-cache.xsd">
 
 	<bean id="BootstrapStringCryptoProvider" class="com.themodernway.server.core.security.BootstrapStringCryptoProvider">
 		<constructor-arg>
@@ -29,8 +35,8 @@
 	</bean>
 
 	<bean id="PropertiesProvider" class="com.themodernway.server.core.support.spring.CoreEncryptedPropertiesProviderPlaceholderConfigurer">
-		<constructor-arg ref="BootstrapStringCryptoProvider"/>
-		<constructor-arg value="0xCAFEBABE;"/>
+		<constructor-arg ref="BootstrapStringCryptoProvider" />
+		<constructor-arg value="0xCAFEBABE;" />
 		<property name="locations">
 			<list>
 				<value>file:/opt/development/properties/themodernway-server-core/webapp.properties</value>
@@ -38,11 +44,11 @@
 		</property>
 	</bean>
 
-	<bean id="ScriptingProvider" class="com.themodernway.server.core.scripting.ScriptingProvider" destroy-method="close">
+	<bean id="ScriptingProvider" class="com.themodernway.server.core.scripting.ScriptingProvider" destroy-method="close" lazy-init="true">
 		<constructor-arg>
 			<list>
-				<bean class="com.themodernway.server.core.scripting.GroovyScriptingProperties"/>
-				<bean class="com.themodernway.server.core.scripting.JavaScriptScriptingProperties"/>
+				<bean class="com.themodernway.server.core.scripting.GroovyScriptingProperties" />
+				<bean class="com.themodernway.server.core.scripting.JavaScriptScriptingProperties" />
 			</list>
 		</constructor-arg>
 	</bean>

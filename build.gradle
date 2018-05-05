@@ -15,7 +15,9 @@
  */
 
 buildscript {
-    repositories { mavenCentral() }
+    repositories {
+    	mavenCentral()
+    }
     dependencies {
         classpath(group: 'org.ajoberstar', name: 'grgit', version: '1.7.2')
         classpath(group: 'commons-codec', name: 'commons-codec', version: '1.11')
@@ -46,7 +48,7 @@ sourceCompatibility = 1.8
 
 targetCompatibility = 1.8
 
-version = '2.1.6-RELEASE'
+version = '2.2.1-RELEASE'
 
 group = 'com.themodernway'
 
@@ -62,9 +64,8 @@ checkstyle {
 tasks.withType(Checkstyle) { source 'src/main' }
 
 task deleteConfigs(type: Delete) {
-    def tree = project.fileTree(dir: "${buildDir}/resources/main")
-    tree.each { File file ->
-        delete(file)
+	project.fileTree(dir: "${buildDir}/resources/main").each { file ->
+        file.delete()
     }
 }
 
@@ -239,7 +240,7 @@ def String getBuildGITCommitMessage() {
 }
 
 dependencies {
-    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '2.1.6-RELEASE')
+    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '2.2.1-RELEASE')
     springCorePackages().each { String name ->
         compile(group: 'org.springframework', name: name, version: '5.0.5.RELEASE')
     }
@@ -253,9 +254,10 @@ dependencies {
         exclude(group: 'org.codehaus.groovy', module: 'groovy-all')
     }
     compile(group: 'org.springframework.integration', name: 'spring-integration-kafka', version: '3.0.3.RELEASE')
+    compile(group: 'org.springframework.kafka', name: 'spring-kafka', version: '2.1.5.RELEASE')
+    compile(group: 'org.apache.kafka', name: 'kafka-clients', version: '1.1.0')
     compile(group: 'javax.jms', name: 'javax.jms-api', version: '2.0.1')
     compileOnly(group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0')
-    testCompile(group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3')
 }
 
 artifacts {
@@ -336,15 +338,9 @@ def List<String> springCorePackages() {
 def List<String> springIntegrationPackages() {
     return [
         'spring-integration-core',
-        'spring-integration-ip',
         'spring-integration-ws',
         'spring-integration-jms',
-        'spring-integration-jpa',
-        'spring-integration-xml',
-        'spring-integration-ftp',
-        'spring-integration-sftp',
         'spring-integration-mail',
-        'spring-integration-file',
         'spring-integration-http',
         'spring-integration-amqp',
         'spring-integration-event',
