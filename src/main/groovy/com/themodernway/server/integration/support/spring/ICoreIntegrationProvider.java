@@ -16,13 +16,12 @@
 
 package com.themodernway.server.integration.support.spring;
 
-import java.io.IOException;
-
 import com.themodernway.server.core.IBeanFactoryProviderNamed;
 
 public interface ICoreIntegrationProvider extends IBeanFactoryProviderNamed<ICoreIntegrationDescriptor>
 {
-    default void destroy() throws IOException
+    @Override
+    default void destroy() throws Exception
     {
         close();
     }
