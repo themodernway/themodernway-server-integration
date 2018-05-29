@@ -23,7 +23,7 @@ buildscript {
         classpath(group: 'commons-codec', name: 'commons-codec', version: '1.11')
         classpath(group: 'commons-logging', name: 'commons-logging', version: '1.2')
         classpath(group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.5')
-        classpath(group: 'org.owasp', name: 'dependency-check-gradle', version: '3.1.2')
+        classpath(group: 'org.owasp', name: 'dependency-check-gradle', version: '3.2.0')
         classpath(group: 'org.sonarsource.scanner.gradle', name: 'sonarqube-gradle-plugin', version: '2.6.2')
     }
 }
@@ -48,7 +48,7 @@ sourceCompatibility = 1.8
 
 targetCompatibility = 1.8
 
-version = '2.2.2-RELEASE'
+version = '2.2.6-RELEASE'
 
 group = 'com.themodernway'
 
@@ -86,6 +86,7 @@ task doJavaDocs(type: Javadoc) {
     title = "${getProjectCommonName()}"
     (options as StandardJavadocDocletOptions).with {
         links = getJavaDocLinks()
+        stylesheetFile = project.file('config/javadoc/modern.css')
         bottom = "<div><h4 class=\"footer\"><a href=\"${getBuildGITHomeURL()}\" target=\"_blank\">${getProjectCommonName()} - Copyright &copy; 2018, The Modern Way</a> - <a href=\"${getBuildGITCommitHash()}\" target=\"_blank\">${getBuildModuleVersion()}</a> - <a href=\"mailto:deansjones@gmail.com\">Author: Dean S. Jones</a></h4></div>"
     }
 }
@@ -240,7 +241,7 @@ def String getBuildGITCommitMessage() {
 }
 
 dependencies {
-    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '2.2.2-RELEASE')
+    compile(group: 'com.themodernway', name: 'themodernway-server-core', version: '2.2.6-RELEASE')
     springCorePackages().each { String name ->
         compile(group: 'org.springframework', name: name, version: '5.0.6.RELEASE')
     }
@@ -254,7 +255,7 @@ dependencies {
         exclude(group: 'org.codehaus.groovy', module: 'groovy-all')
     }
     compile(group: 'org.springframework.integration', name: 'spring-integration-kafka', version: '3.0.3.RELEASE')
-    compile(group: 'org.springframework.kafka', name: 'spring-kafka', version: '2.1.5.RELEASE')
+    compile(group: 'org.springframework.kafka', name: 'spring-kafka', version: '2.1.6.RELEASE')
     compile(group: 'org.apache.kafka', name: 'kafka-clients', version: '1.1.0')
     compile(group: 'javax.jms', name: 'javax.jms-api', version: '2.0.1')
     compileOnly(group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0')
